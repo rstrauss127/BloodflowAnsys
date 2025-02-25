@@ -1,0 +1,29 @@
+# encoding: utf-8
+# 2024 R2
+SetScriptVersion(Version="24.2.133")
+template1 = GetTemplate(TemplateName="Fluid Flow")
+system1 = template1.CreateSystem()
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+geometry1.Exit()
+geometry1.Edit()
+geometry1.Exit()
+geometry1.Edit()
+geometry1.Exit()
+geometry1.Edit()
+geometry1.Exit()
+geometry1.Edit(IsDiscoveryGeometry=True)
+system1.Delete()
+system2 = template1.CreateSystem()
+geometryComponent1 = system2.GetComponent(Name="Geometry")
+geometryComponent1.DisplayText = "Hexagon"
+geometry2 = system2.GetContainer(ComponentName="Geometry")
+geometryProperties1 = geometry2.GetGeometryProperties()
+geometryProperties1.GeometryImportNamedSelections = True
+geometryProperties1.GeometryImportNamedSelections = False
+geometry2.Edit(IsSpaceClaimGeometry=True)
+geometry2.Exit()
+unitSystem1 = SetProjectUnitSystem(UnitSystemName="NMMTON_STANDARD")
+geometry2.Edit(IsSpaceClaimGeometry=True)
+geometry2.Exit()
+Save(Overwrite=True)
